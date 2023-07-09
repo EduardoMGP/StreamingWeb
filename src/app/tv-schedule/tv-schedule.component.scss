@@ -1,0 +1,139 @@
+$scale: 1;
+
+$tv-schedule-width: 1500 * $scale;
+$tv-schedule-height: 700 * $scale;
+$schedule-width: 3000 * $scale;
+$hours-title-height: 50 * $scale;
+$days-width: 50 * $scale;
+$schedule-event-height: 50 * $scale;
+
+.tv-schedule {
+  position: relative;
+  width: calc($scale * 50)+ $tv-schedule-width+px;
+  height: calc($scale * 50)+ $tv-schedule-height+px;
+  overflow: hidden;
+
+  .schedule-title {
+    height: $hours-title-height+px;
+    overflow: inherit;
+
+    .hours {
+      display: flex;
+      justify-content: space-between;
+      width: $schedule-width+px;
+      height: $hours-title-height+px;
+      line-height: $hours-title-height+px;
+      margin-left: $days-width+px;
+
+      .hour {
+        display: block;
+        width: 125px;
+        text-align: center;
+        line-height: $hours-title-height+px;
+        border: 1px solid #ccc;
+      }
+      .hour:nth-child(2n) {
+        background-color: #f5f5f5;
+      }
+      .hour:nth-child(2n+1) {
+        background-color: #eaeaea;
+      }
+    }
+  }
+
+  .schedule-bar {
+    height: $tv-schedule-height +px;
+    overflow: inherit;
+    .days {
+      width: $days-width+px;
+      height: $schedule-event-height+px;
+      line-height: $schedule-event-height+px;
+
+      .day {
+        text-align: center;
+        line-height: $schedule-event-height+px;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .day:nth-child(2n) {
+        background-color: #f5f5f5;
+      }
+      .day:nth-child(2n+1) {
+        background-color: #eaeaea;
+      }
+    }
+  }
+
+
+  .schedule {
+    width: $tv-schedule-width+px;
+    height: $tv-schedule-height+px;
+    overflow: auto;
+    position: absolute;
+    top: $hours-title-height+px;
+    left: $days-width+px;
+
+    .line {
+      position: absolute;
+      width: 2px;
+      margin: 0;
+      height: $tv-schedule-height+px;
+      border: none;
+      background-color: #5e963d;
+      pointer-events: none;
+      top: 0;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .events:nth-child(2n) {
+      background-color: #eaeaea;
+    }
+    .events:nth-child(2n+1) {
+      background-color: #f5f5f5;
+    }
+
+    .events {
+      width: $schedule-width+px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      height: $schedule-event-height+px;
+      line-height: $schedule-event-height+px;
+      position: relative;
+
+      .event {
+        color: #fff;
+        text-align: center;
+        line-height: $schedule-event-height+px;
+        width: 100%;
+        height: $schedule-event-height+px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        //gerar background listrado com cores diferentes
+        //background: repeating-linear-gradient(
+        //  45deg,
+        //  #f5f5f5,
+        //  #f5f5f5 10px,
+        //  #eaeaea 10px,
+        //  #eaeaea 20px
+        //);
+
+        background: repeating-linear-gradient(
+            -55deg,
+            #222,
+            #222 10px,
+            #333 10px,
+            #333 20px
+        );
+      }
+    }
+  }
+
+}

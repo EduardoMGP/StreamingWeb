@@ -1,0 +1,31 @@
+
+<section class="tv-schedule">
+
+  <div class="schedule-title" #hours_title>
+    <div class="hours">
+      <div class="hour" *ngFor="let hour of hours">
+        <div class="day-label">{{hour}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule-bar" #date_bar>
+    <div class="days">
+      <div class="day" *ngFor="let value of dates">
+        <div class="day-label">{{value.day}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule" #schedule>
+    <hr class="line" #line>
+    <div class="events" *ngFor="let value of dates" #time_line_events>
+      <div class="event-content" *ngFor="let ev of events_.get(value.date)">
+        <div class="event" [ngStyle]="ev.style">
+          <div class="event-label">{{ev.name}}</div>
+          <div class="event-content-title">{{ev.startFormat}} - {{ev.endFormat}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
